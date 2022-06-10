@@ -1,0 +1,30 @@
+* {
+  padding: 0px;
+}
+
+.loaded {
+  cursor: crosshair;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+h1,
+form,
+.file-input,
+.main_contents {
+  margin: 10px;
+}
+
+.main_contents {
+  position: relative;
+}
+
+form > button {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.author {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: rgba(0, 0, 0, 0.5);
+}
