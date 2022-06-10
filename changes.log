@@ -5,3 +5,7 @@
 
 1.1 -> 1.2
 - Added Detected Peak Removal
+
+1.2 -> 2.0
+- Added API Feature
+- js.plot -> Plotly.js
