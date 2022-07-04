@@ -28,3 +28,17 @@ form > button {
   right: 20px;
   color: rgba(0, 0, 0, 0.5);
 }
+
+.profile-control {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-width,
+.profile-avg {
+  width: 50px;
+}
+
+.profile-control_width {
+  margin: 0 20px;
+}

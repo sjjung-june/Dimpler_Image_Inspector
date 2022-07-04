@@ -31,6 +31,8 @@ def plot_profile():
         end = request.get_json()["end_pos"]
         dist = request.get_json()["dist"]
         smooth = request.get_json()["smooth"]
+        method = request.get_json()["method"]
+        
         img_name = img.split('/')[-1]
         image_url = f'{UPLOAD_FOLDER}/{img_name}'        
         
@@ -39,7 +41,7 @@ def plot_profile():
         image_copy = cv2.GaussianBlur(image_copy,(smooth,smooth),cv2.BORDER_DEFAULT)        
         line = np.transpose(np.array(draw.line(start[0],start[1],end[0],end[1])))
         data = image_copy.copy()[line[:, 1], line[:, 0]]
-        peaks, _ =  find_peaks(data*-1, distance=dist)        
+        peaks, _ =  find_peaks(data*method, distance=dist)        
         return {"profile_x": np.arange(0,len(data)).tolist(), "profile_y":data.tolist(), "peak_x":peaks.tolist(), "peak_y":data[peaks].tolist()}
 
 @app.route("/profile/delete", methods=['POST'])

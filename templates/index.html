@@ -13,11 +13,29 @@
     <script src="https://cdn.plot.ly/plotly-2.12.1.min.js"></script>
   </head>
   <body>
-    <h1>Dimpler Image Inspector Ver. 2.0</h1>
+    <h1>Dimpler Image Inspector Ver. 2.1</h1>
     <input class="file-input" type="file" accept="image/*" />
+    <div class="profile-control">
+        <div class="profile-control_avg">
+          <span>Profile Averaging (Default = 3, Odd) : </span>          
+          <input class="profile-avg" type="number" min="1" step="2" value = "3"></input>
+        </div>
+        <div class="profile-control_width">
+          <span>Detection Width (Default = 5) : </span>          
+          <input class="profile-width" type="number" min="1" value = "5"></input>
+        </div>
+        <div class="profile-control_det">
+          <span>Detection Method : </span>
+          <label>Peak</label>
+          <input class="det_peak" type="radio" name="average"></input>
+          <label>Valley</label>
+          <input class="det_valley" type="radio" name="average"></input>
+        </div>        
+      </div>
     <div class="main_contents">
       <canvas class="canvas"> </canvas>
       <div id="myChart"></div>
+      
     </div>
     <span class="author">선행분석 SA 정승준 TL Tel. 47606</span>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

@@ -5,6 +5,11 @@ const img = document.createElement("img");
 const canvas = document.querySelector(".canvas");
 const ctx = canvas.getContext("2d");
 
+const profile_width = document.querySelector(".profile-width");
+const profile_avg = document.querySelector(".profile-avg");
+const det_peak = document.querySelector(".det_peak");
+const det_valley = document.querySelector(".det_valley");
+
 const server_url = "http://10.138.126.181:5000";
 const SCALE_IMAGE = 0.5;
 
@@ -17,6 +22,8 @@ const mouse = {
   up_y: 0,
   drag: false,
 };
+
+det_peak.checked = true;
 
 function uploadFile() {
   let xhr = new XMLHttpRequest();
@@ -81,7 +88,9 @@ function mouseupHandler(event) {
     mouse.down_y,
     mouse.up_x,
     mouse.up_y,
-    (avg = 5)
+    Number(profile_width.value),
+    Number(profile_avg.value),
+    det_peak.checked ? 1 : -1
   );
 }
 
@@ -101,13 +110,14 @@ function mousemoveHandler(event) {
   }
 }
 
-function getProfile(img, x0, y0, x1, y1, dist = 5, smooth = 3) {
+function getProfile(img, x0, y0, x1, y1, dist, smooth, method) {
   const arr = {
     img: img.src,
     start_pos: [x0 / SCALE_IMAGE, y0 / SCALE_IMAGE],
     end_pos: [x1 / SCALE_IMAGE, y1 / SCALE_IMAGE],
     dist: dist,
     smooth: smooth,
+    method: method,
   };
 
   let xhr = new XMLHttpRequest();
@@ -121,6 +131,7 @@ function getProfile(img, x0, y0, x1, y1, dist = 5, smooth = 3) {
     peak_y = profile_data["peak_y"];
     plotProfile(profile_x, profile_y, peak_x, peak_y);
   };
+  console.log(arr);
   xhr.send(JSON.stringify(arr));
 }
 
