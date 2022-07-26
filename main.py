@@ -33,6 +33,8 @@ def plot_profile():
         smooth = request.get_json()["smooth"]
         method = request.get_json()["method"]
         
+        print(request.get_json())
+
         img_name = img.split('/')[-1]
         image_url = f'{UPLOAD_FOLDER}/{img_name}'        
         
@@ -73,4 +75,4 @@ def add_peak():
         
         return {"profile_x":profile_x, "profile_y":profile_y, "peak_x":peak_x, "peak_y":peak_y}
     
-app.run(host="10.138.126.181")
+app.run(host="10.138.126.152", port=80)
